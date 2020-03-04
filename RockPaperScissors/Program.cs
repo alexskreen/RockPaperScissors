@@ -32,18 +32,20 @@ namespace RockPaperScissors.Program
         {
             Console.WriteLine("Player 1 chose: " + userInput);
             Console.WriteLine("computer chose: " + result);
+            Console.WriteLine("------------------------");
             Console.WriteLine(newGame.FindWinner());
         }
-        public static void readResultsPVP(string userInput, string result, Game newGame)
+        public static void readResultsPVP(string userInput, string password, Game newGame)
         {
             Console.WriteLine("Player 1 chose: " + userInput);
-            Console.WriteLine("Player 2 chose: " + result);
+            Console.WriteLine("Player 2 chose: " + password);
+            Console.WriteLine("------------------------");
             Console.WriteLine(newGame.FindWinner());
         }
 
         public static void ChooseGame()
         {
-            Console.WriteLine("Would you like to play CvC, PvP, or PvC?");
+            Console.WriteLine("Would you like to play PvP, or PvC?");
             string userGameChoice = Console.ReadLine().ToLower();
             if (userGameChoice == "pvc")
             {
@@ -67,11 +69,27 @@ namespace RockPaperScissors.Program
         public static void PlayerVsPlayer()
         {
             Console.WriteLine("Player 1 enter rock, paper, or scissors");
-            string userInput = Console.ReadLine();
+            string password1 = null;
+            while (true)
+            {
+                var key = System.Console.ReadKey(true);
+                if (key.Key == ConsoleKey.Enter)
+                    break;
+                password1 += key.KeyChar;
+            }
+            // string userInput = Console.ReadLine();
             Console.WriteLine("Player 2 enter rock, paper, or scissors");
-            string user2Input = Console.ReadLine();
-            Game newGame = new Game(userInput, user2Input);
-            Program.readResultsPVP(userInput, user2Input, newGame);
+            string password2 = null;
+            while (true)
+            {
+                var key = System.Console.ReadKey(true);
+                if (key.Key == ConsoleKey.Enter)
+                    break;
+                password2 += key.KeyChar;
+            }
+            Console.WriteLine("------------------------");
+            Game newGame = new Game(password1, password2);
+            Program.readResultsPVP(password1, password2, newGame);
         }
     }
 }
