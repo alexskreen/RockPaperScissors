@@ -4,16 +4,16 @@ namespace RockPaperScissors.Models
 {
     public class Game
     {
-        public string Player1;
-        public string Player2;
+        public string Player1 { get; set; }
+        public string Player2 { get; set; }
 
-        // public string UserGameChoice;
+        public string UserGameChoice { get; set; }
         
-        public Game(string player1, string player2)
+        public Game(string player1, string player2, string userGameChoice)
         {
             Player1 = player1;
             Player2 = player2;
-            // UserGameChoice = "";
+            UserGameChoice = userGameChoice;
 
         }
 
